@@ -7,3 +7,9 @@ Caso essa variável esteja exportada no .bashrc, o valor dela será usado como r
 # Insere o valor
 echo "principal_branch='main'" >> $HOME/.bashrc
 ```
+
+Para que os alias passem a funcionar, é necessário que o seu bashrc leia as funções git aqui definidas.
+Para isso, basta executar no terminal
+```shell
+$ source insert_bashrc.sh
+```
