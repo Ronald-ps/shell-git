@@ -3,20 +3,6 @@
 principal_branch=$( [ "$principal_branch" ] && echo "$principal_branch" || echo "master" )
 export principal_branch
 
-
-# Abre este script em um dos editores de texto: vs code, vim ou nano, nessa ordem
-gt-edit(){
-  script_path="$0"
-  script_directory=$(dirname "$script_path")
-  if command -v code &>/dev/null; then
-    code $script_directory
-  elif command -v vim &>/dev/null; then
-    vim $script_directory
-  else
-    nano $script_directory
-  fi
-}
-
 alias gt="git";
 alias gtch="git checkout"
 alias gts="git status";
