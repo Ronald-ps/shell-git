@@ -32,13 +32,15 @@ teste-rebase(){
   git checkout -b $next_branch
 }
 
-# Remover um branch, basta passar o nome.
+# Remover um branch remota, basta passar o nome.
+# Ex: delete-branch feature/teste
 delete-branch(){
   branch=$1
   git push origin --delete $branch
 }
 
 # Criar uma branch local a partir de uma branch remota.
+# Ex: gt-c "feature/teste"
 gt-c(){
   branch=$1
   git switch -c $branch origin/$branch
@@ -74,6 +76,7 @@ gt-first(){
 
 # Faz merge com a branch principal. Irá atualizar a branch principal, e iniciar o merge.
 # (Lógico, se tiver conflitos, vc ainda terá de resolvê-los)
+# Ex: gt-merge
 gt-merge(){
   atual_branch=$(__git_ps1 "%s")
   gtsh "mudancas para gt-merge"
@@ -86,6 +89,8 @@ gt-merge(){
 # Cria uma cópia do estado atual.
 # É útil para quando você não quer commitar, mas tem receio de perder o que fez até agora,
 # Ou avançar implmentar alguma coisas sobre as mudanças atuais e quebrar o que já fez
+# Ex: gt-copy
+# É como gtsh, mas com mensagem padrão.
 gt-copy(){
   texto_adicional=$( [ "$1" ] && echo "$1" || echo "sem mensagem adicional" )
   datetime=`date +"%H:%M:%S %d/%m%Y"`
@@ -96,6 +101,7 @@ gt-copy(){
 # criar comando limpar branchs. É útil pra quando quiser limpar branch antigas
 # e não usadas de uma vez só. Mas não é tão útil quando se está trabalhando
 # em mais de uma feature ao mesmo tempo.
+# Ex: gtb-clear
 gtb-clear(){
   except_branch=$1
   atual_branch=$(__git_ps1 "%s")
@@ -106,7 +112,7 @@ gtb-clear(){
 }
 
 # Força apagar msmo branchs que não tenha sido feito o push.
-# Não apaga nem a branch principal, nem a branch principal.
+# Não apaga nem a branch principal, nem a branch que está em uso.
 gtb-clear-force(){
   except_branch=$1
   atual_branch=$(__git_ps1 "%s")
