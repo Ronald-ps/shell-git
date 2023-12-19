@@ -5,7 +5,7 @@ A variável "principal_branch" contém o valor da branch principal.
 Caso essa variável esteja exportada no .bashrc, o valor dela será usado como referência. Caso contrário, será usado o valor **"master"** como referência de branch principal.
 ```shell
 # Insere o valor
-echo "principal_branch='main'" >> $HOME/.bashrc
+echo "export principal_branch='main'" >> $HOME/.bashrc
 ```
 
 Para que os alias passem a funcionar, é necessário que o seu bashrc leia as funções git aqui definidas.
